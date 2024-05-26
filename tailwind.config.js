@@ -39,5 +39,5 @@ module.exports = {
       gold: '#c99d22',
     },
   },
-  plugins: [],
+  plugins: [require('daisyui'),],
 };

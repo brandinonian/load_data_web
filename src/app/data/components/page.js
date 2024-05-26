@@ -1,7 +1,7 @@
 export default function ComponentsMenu() {
   return (
-    <div>
-
+    <div className="h-full flex flex-col">
+      <p>Components</p>
     </div>
   );
 }
