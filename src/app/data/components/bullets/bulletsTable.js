@@ -6,6 +6,7 @@ export default function BulletsTable({ data }) {
       <table className="table table-lg">
         <thead>
           <tr>
+            <th></th>
             <th>Brand</th>
             <th>Name</th>
             <th>Weight</th>
@@ -15,16 +16,15 @@ export default function BulletsTable({ data }) {
         <tbody>
           {data.map(bullet => (
             <tr className="hover:bg-blue-400">
-              <Link href={`/data/components/bullets/id/${bullet._id}`}>
-                <td>{bullet.brand}</td>
-                <td>{bullet.name}</td>
-                <td>{bullet.weight + ' gr'}</td>
-                <td>{bullet.diam + `"`}</td>
-              </Link>
+              <td><Link href={`/data/components/bullets/id/${bullet._id}`}>{`Details >`}</Link></td>
+              <td>{bullet.brand}</td>
+              <td>{bullet.name}</td>
+              <td>{bullet.weight + ' gr'}</td>
+              <td>{bullet.diam + `"`}</td>
             </tr>
           ))}
         </tbody>
       </table>
     </div>
-  )
+  );
 }

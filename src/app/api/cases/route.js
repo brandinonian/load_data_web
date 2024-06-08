@@ -1,7 +1,7 @@
-export async function GET(request, { params }) {
-  const id = params.id;
-  const response = await fetch(`http://localhost:8080/cases/${id}`, { method: 'GET' });
+export async function GET() {
+  const response = await fetch('http://localhost:8080/cases', { method: 'GET' });
   const data = await response.json();
+  console.log(data);
   return Response.json({ data });
 }
 
