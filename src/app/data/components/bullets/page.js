@@ -40,7 +40,7 @@ export default function BulletsHome() {
     <div>
       <BulletMenu caliberList={caliberList} setSelectedCaliber={setSelectedCaliber} />
       {noDisplay ?
-        <div className="text-center py-20">
+        <div className="text-center text-display-100 py-20">
           <div className="text-xl">Select a caliber...</div>
         </div> :
         <div className="p-4">

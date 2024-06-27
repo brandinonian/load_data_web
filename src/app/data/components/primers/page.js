@@ -6,24 +6,39 @@ import PrimersMenu from "./primersMenu";
 
 export default function PrimersHome() {
 
-  const [powderList, setPowderList] = useState();
+  const [shouldUpdate, setShouldUpdate] = useState(true);
+  const [primerList, setPrimerList] = useState();
+  const [displayList, setDisplayList] = useState();
+  const [brandFilter, setBrandFilter] = useState();
+
+  function updateDisplayLists(brand) {
+    let data = primerList;
+    if (brand) data = data.filter(primer => primer.brand == brand);
+    setDisplayList(data);
+  }
+
+  useEffect(() => {
+    updateDisplayLists(brandFilter);
+  }, [brandFilter]);
 
   useEffect(() => {
     async function fetchPrimers() {
       const response = await fetch('/api/primers', { method: 'GET' });
       const responseObj = await response.json();
-      console.log(responseObj);
-      setPowderList(responseObj.data);
+      setPrimerList(responseObj.data);
     }
-    fetchPrimers();
-  }, []);
+    if (shouldUpdate) {
+      fetchPrimers();
+      setShouldUpdate(false);
+    }
+  }, [shouldUpdate]);
 
   return (
     <div>
-      <PrimersMenu />
-      {powderList &&
+      <PrimersMenu updateHandler={setShouldUpdate} primerList={primerList} brandFilterHandler={setBrandFilter} />
+      {displayList &&
         <div className="p-4">
-          <PrimersTable data={powderList} />
+          <PrimersTable data={displayList} />
         </div>
       }
     </div>

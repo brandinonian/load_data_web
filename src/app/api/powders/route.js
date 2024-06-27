@@ -4,8 +4,13 @@ export async function GET() {
   return Response.json({ data });
 }
 
-export async function POST() {
-  const response = await fetch('https://localhost:8080/powders', { method: 'POST' });
+export async function POST(request) {
+  const response = await fetch('https://localhost:8080/powders', {
+    method: 'POST',
+    headers: { "content-type": "application/json" },
+    body: request.body,
+    duplex: 'half',
+  });
   const data = await response.json();
   return Response.json({ data });
 }

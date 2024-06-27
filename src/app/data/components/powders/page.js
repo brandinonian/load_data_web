@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import PowdersTable from "./powdersTable";
+import PowdersMenu from "./powdersMenu";
 
 export default function PowdersHome() {
 
@@ -19,6 +20,7 @@ export default function PowdersHome() {
 
   return (
     <div>
+      <PowdersMenu />
       {powderList &&
         <div className="p-4">
           <PowdersTable data={powderList} />
